@@ -1,0 +1,54 @@
+---
+title: "ABAP CDS View 기초 가이드"
+description: "SAP ABAP CDS View의 기본 개념과 활용법을 알아봅니다"
+slug: abap-cds-view-basics
+category: ABAP
+tags: ["ABAP", "CDS", "SAP", "HANA"]
+author: "박스로고 입은 개발자"
+publishedAt: "2026-03-15"
+featured: false
+---
+
+## CDS View란?
+
+Core Data Services(CDS)는 SAP HANA 기반의 데이터 모델링 기술입니다.
+
+### 기본 구조
+
+```sql
+@AbapCatalog.sqlViewName: 'ZV_FLIGHT'
+@AbapCatalog.compiler.compareFilter: true
+@AccessControl.authorizationCheck: #CHECK
+define view ZI_Flight as select from sflight {
+  key carrid   as Carrier,
+  key connid   as Connection,
+  key fldate   as FlightDate,
+      price    as Price,
+      currency as Currency,
+      seatsmax as MaxSeats,
+      seatsocc as OccupiedSeats
+}
+```
+
+### 주요 특징
+
+- **Push-down 방식**: 데이터 처리가 HANA DB 레벨에서 수행
+- **연관(Association)**: 테이블 간 관계를 선언적으로 정의
+- **어노테이션**: 메타데이터로 UI, 권한, 분석 등 설정
+
+### Association 예제
+
+```sql
+define view ZI_Booking as select from sbook
+  association [1] to ZI_Flight as _Flight
+    on $projection.Carrier   = _Flight.Carrier
+    and $projection.Connection = _Flight.Connection {
+  key carrid   as Carrier,
+  key connid   as Connection,
+  key bookid   as BookingId,
+      customid as CustomerId,
+      _Flight  // Association 노출
+}
+```
+
+CDS View는 SAP Fiori와 RAP 개발의 기반이 됩니다.
