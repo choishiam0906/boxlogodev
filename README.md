@@ -1,6 +1,6 @@
 <div align="center">
 
-# Hey, I'm BoxLogo 👋
+# Hey, I'm BoxLogo Dev 👋
 
 **SAP 도메인 기반 운영 자동화와 AI 워크플로우를 만드는 개발자**
 
