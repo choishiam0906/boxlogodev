@@ -35,7 +35,7 @@ I build practical systems around **SAP ops automation**, **AI agents**, and **de
 
 FI · CO · TR · MM · SD · PP · HCM · SFSF · ABAP · S/4 Migration · BTP · BASIS — 12개 모듈을 커버하는 SAP 스킬/에이전트 플러그인 마켓
 
-`JavaScript` · ⭐ 5
+`JavaScript` · ![Stars](https://img.shields.io/github/stars/BoxLogoDev/sapstack?style=social)
 
 </td>
 <td width="50%">
